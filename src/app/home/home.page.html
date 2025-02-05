@@ -1,20 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      🖥️ Tienda de Informática
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="container">
+    <h1>Lista de Artículos</h1>
+    <div class="horizontal-scroll">
+      <ion-card *ngFor="let articulo of arrayInformatica" (click)="selecTarea(articulo)" class="articulo-card">
+        <div class="articulo-img" [ngStyle]="{'background-image': 'url(' + articulo.data.imagen + ')'}"></div>
+        <ion-card-header>
+          <ion-card-title>{{articulo.data.articulo}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{articulo.data.descripcion}}</p>
+          <p><strong>Stock:</strong> {{articulo.data.stock}}</p>
+          <p><strong>Precio:</strong> {{articulo.data.precio}}€</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="add-button" (click)="navigateToAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

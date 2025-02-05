@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Detalle</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-item>
+    <ion-label>ID del artículo</ion-label>
+    <ion-input [value]="document.id" readonly *ngIf="!isNew"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Artículo</ion-label>
+    <ion-input [(ngModel)]="document.data.articulo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Descripción</ion-label>
+    <ion-input [(ngModel)]="document.data.descripcion"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Precio</ion-label>
+    <ion-input [(ngModel)]="document.data.precio"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Stock</ion-label>
+    <ion-input [(ngModel)]="document.data.stock"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Imagen URL</ion-label>
+    <ion-input [(ngModel)]="document.data.imagen"></ion-input>
+  </ion-item>
+
+  <ion-button (click)="clicBotonGuardar()">{{ isNew ? 'Guardar' : 'Modificar' }} artículo</ion-button>
+  <ion-button (click)="clicBotonBorrar()" *ngIf="!isNew">Borrar artículo</ion-button>
+  <ion-button (click)="clicBotonCancelar()">Cancelar</ion-button>
+</ion-content>
