@@ -42,10 +42,6 @@ export class DetallePage implements OnInit {
   }
 
   clicBotonGuardar() {
-    // Append "€" to the price field if not already present
-    if (!this.document.data.precio.endsWith('€')) {
-      this.document.data.precio += '€';
-    }
 
     if (this.isNew) {
       this.firestoreService.insertar("Informatica", this.document.data).then(() => {
